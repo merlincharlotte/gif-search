@@ -1,0 +1,22 @@
+<div class="container">
+	<form class="well row">
+		<input type="text" name="searchTerm" [(ngModel)]="searchTerm" 
+		class="form-control" placeholder="Search for..." class="col-md-10">
+		<button (click)="searchGifs()" class="btn btn-primary" class="col-md-2">Search </button>  
+    </form>
+</div>
+
+<div class="container" *ngIf="gifs">	
+	<h3>Your favorite gifs for {{searchTerm}}</h3>
+	<div class="row">
+	  <div *ngFor="let gif of gifs; let i=index">
+		<div class="col-md-4" *ngIf="i<10">		
+		  <img src={{gif.images.fixed_height.url}} alt="Image" title="Hello" class="img-thumbnail text-center">
+		</div>
+	  </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="gifs && gifs.length==0">
+	<h3>No images found for {{searchTerm}}.</h3>
+</div>
